@@ -10,9 +10,7 @@ export interface NegS<N extends Nat> {
     readonly __NegS: N & void;
 }
 
-export namespace Lit {
-    type Add<T extends Nat,U extends Nat> = T extends Z ? U : S<Add<>
-}
+type NatAdd<T extends Nat,U extends Nat> = T extends Z ? U : (T extends S<infer Nt> ? S<Add<Nt,U>>)
 /* python is useful for metacoding */
 export namespace IntLit {
   type _0 = Pos<Lit._0>
